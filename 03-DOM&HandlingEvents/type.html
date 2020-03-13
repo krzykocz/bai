@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Typing test</title>
-		<meta charset="UTF-8">
-	</head>
-	<body>
-		<h1>How fast are your fingers?</h1>
-		<h3>You have 30 seconds. Just start typing...</h3>
-		<p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
+
+<head>
+	<title>Typing test</title>
+	<meta charset="UTF-8">
+</head>
+
+<body>
+	<h1>How fast are your fingers?</h1>
+	<h3>You have 30 seconds. Just start typing...</h3>
+	<p>Nam strzelać nie kazano. - Wstąpiłem na działo<br>
 		I spójrzałem na pole; dwieście armat grzmiało.<br>
 		Artyleryi ruskiej ciągną się szeregi,<br>
 		Prosto, długo, daleko, jako morza brzegi;<br>
@@ -19,13 +21,24 @@
 		Czarne chorągwie na śmierć prowadzą zastępy.<br>
 		Przeciw nim sterczy biała, wąska, zaostrzona,<br>
 		Jak głaz bodzący morze, reduta Ordona.</p>
-		
-		<textarea rows="15" cols="50"></textarea><br>
-		
-		<script>
-			// a JavaScript code here ...
-			
-		</script>
-		
-	</body>
+
+	<textarea onkeypress="setTimeout(calculate,30000)" id="typingArea" rows="15" cols="50"></textarea><br>
+
+	<script>
+		// a JavaScript code here ...
+		var activated = false;
+		const calculate = () => {
+			if (activated == false) {
+				activated = true;
+				var typingArea = document.getElementById("typingArea");
+				typingArea.setAttribute("disabled", "");
+				countedCharacters = document.createElement('h3');
+				countedCharacters.appendChild(document.createTextNode(`W ciągu 30 sekund udało ci się napisać ${typingArea.value.length} znaków oraz ${typingArea.value.split(" ").length} słów`));
+				typingArea.parentNode.insertBefore(countedCharacters, typingArea.nextSibling);
+			}
+		}
+	</script>
+
+</body>
+
 </html>
