@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Personal Data</title>
+		<meta charset="UTF-8">
+		<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	</head>
+	<body>
+		<h1>Personal data</h1>
+		<input type="button" id="showData" value="Display personalData">
+		<script>
+			var URL = "./people.json"
+			$(document).ready(function() {
+                $('#showData').after('<ol id=personalList>')
+				$("#showData").click(function () {
+					$.getJSON(URL, function(data) {
+                        $.each(data, function(i, val) {
+                            $('#personalList').append(`<li>${val.name} ${val.surname.toUpperCase()}, ${val.country}</li>`)
+                        })
+					})
+				})
+			})
+		</script>
+
+	</body>
+</html>

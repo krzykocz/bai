@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Datatables</title>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" />
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body>
+    <h1>Personal data</h1>
+    <table id="peopleTable"></table>
+    <script>
+        var URL = "./people.json"
+        $(document).ready(function () {
+            $.getJSON(URL, function (data) {
+                $('#peopleTable').DataTable({
+                    data: data,
+                    columns: [
+                        { data: 'name', title: "Name" },
+                        { data: 'surname', title: "Surname" },
+                        { data: 'age', title: "Age" },
+                        { data: 'country', title: "Country" },
+                        { data: 'email', title: "Email" }
+                    ]
+                });
+            });
+        })
+    </script>
+
+</body>
+
+</html>

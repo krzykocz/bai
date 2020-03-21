@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Chart</title>
+    <meta charset="UTF-8">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <h1>Chart of last 10 gold price quotations</h1>
+    <canvas id="goldChart" width="400" height="400"></canvas>
+    <script>
+        $(document).ready(function () {
+            const api_base_url = "http://api.nbp.pl/api/cenyzlota/last/"
+            const countQuotations = 10;
+            const ctx = $('#goldChart');
+            const goldDate = new Array();
+            const goldPrice = new Array();
+            $.getJSON(api_base_url + countQuotations, function (data) {
+                const goldChart = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: data.map((val) => val.data),
+                        datasets: [
+                            {
+                                data: data.map((val) => val.cena),
+                                borderColor: 'red',
+                                backgroundColor: 'lightgrey',
+                                label: "Gold Price"
+                            }
+                        ]
+                    },
+                })
+            })
+        })
+    </script>
+
+</body>
+
+</html>
