@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        company: 'UnikPol S.A.',
-        address: 'ul. Ukryta 5',
-        postcode: '02-114',
-        city: 'Rawa Mazowiecka',
-        landline: '22 345 90 21',
-        mobile: '888 213 992',
-        web: 'http://www.unikpol.pl'
+  </head>
+  <body class="body">
+    <div id="app">
+      <div id="card">
+        <div id="content">
+          <b>{{ company.toUpperCase() }}</b>
+          <p>{{ address }}</p>
+          <p>{{ postcode }} {{ city }}</p>
+          <p>tel. {{ landline }}, {{ mobile }}</p>
+          <a :href="web">{{ web }}</a>
+        </div>
+      </div>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          company: "UnikPol S.A.",
+          address: "ul. Ukryta 5",
+          postcode: "02-114",
+          city: "Rawa Mazowiecka",
+          landline: "22 345 90 21",
+          mobile: "888 213 992",
+          web: "http://www.unikpol.pl"
+        }
+      });
+    </script>
+    <style>
+      #card {
+        border: 1px solid #000;
+        width: 400px;
+        height: 200px;
       }
-    });
-  </script>
 
-</body>
+      #content {
+        margin: auto;
+        padding: 40px;
+        text-align: center;
+        line-height: 0.5;
+      }
+      .body {
+        margin: auto;
+        width: 50%;
+        padding: 100px;
+      }
+    </style>
+  </body>
 </html>

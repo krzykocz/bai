@@ -1,37 +1,63 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        films: [
-          {
-            language: 'Python',
-            popularity: 25.95
-          },
-          {
-            language: 'Java',
-            popularity: 21.42
-          },
-          {
-            language: 'JavaScript',
-            popularity: 8.26
-          },
-          {
-            language: 'C#',
-            popularity: 7.62
-          },
-          {
-            language: 'Php',
-            popularity: 7.37
-          }
-        ] 
-      }
-    });
-  </script>
-</body>
+    <script
+      src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"
+      integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI="
+      crossorigin="anonymous"
+    ></script>
+  </head>
+
+  <body>
+    <div id="app">
+      <canvas id="langChart"></canvas>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          languages: [
+            {
+              language: "Python",
+              popularity: 25.95
+            },
+            {
+              language: "Java",
+              popularity: 21.42
+            },
+            {
+              language: "JavaScript",
+              popularity: 8.26
+            },
+            {
+              language: "C#",
+              popularity: 7.62
+            },
+            {
+              language: "Php",
+              popularity: 7.37
+            }
+          ]
+        },
+        mounted() {
+          const ctx = document.getElementById("langChart").getContext("2d");
+          new Chart(ctx, {
+            type: "bar",
+            data: {
+              labels: this.languages.map(lang => lang.language),
+              datasets: [
+                {
+                  label: "Programming language popularity",
+                  data: this.languages.map(lang => lang.popularity),
+                  backgroundColor: "orange",
+                  borderColor: "red"
+                }
+              ]
+            }
+          });
+        }
+      });
+    </script>
+  </body>
 </html>

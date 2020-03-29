@@ -1,24 +1,41 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
-  <h1>Grades</h1>    
-
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        product: {
-          name: 'book',
-          unitPrice: 17.5,
-          quantity: 3,
-          VAT: 23
-        }
-      }
-    });
-  </script>
-
-</body>
+  </head>
+  <body>
+    <h1>Grades</h1>
+    <div id="app">
+      <b>RECEIPT</b><br>
+      ---------------------------------<br />
+      Product: {{product.name}} <br />
+      Unit Price: {{product.unitPrice}} zł<br />
+      Quantity: {{product.quantity}}<br />
+      Amount: {{product.unitPrice * product.quantity}} zł<br />
+      VAT Tax Rate: {{product.VAT}}%<br />
+      ---------------------------------<br />
+      ---------------------------------<br />
+      <b>Total: {{total}} zł</b>
+    </div>
+    <script>
+      var app = new Vue({
+        el: "#app",
+        data: {
+          product: {
+            name: "book",
+            unitPrice: 17.5,
+            quantity: 3,
+            VAT: 23
+          }
+        },
+        computed: {
+            total: function() {
+              amount = this.product.unitPrice * this.product.quantity;
+              total = amount + (amount * (this.product.VAT / 100));
+              return total.toFixed(2);
+            }
+          }
+      });
+    </script>
+  </body>
 </html>

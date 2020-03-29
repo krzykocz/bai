@@ -1,21 +1,34 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-</head>
-<body>
-  <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        todo: [
-          'Purchase two tickets to cinema',
-          'Feed cat',
-          'Pay cable bill',
-          'Go shopping'
-      }
-    });
-  </script>
-
-</body>
+  </head>
+  <body>
+    <div id="app">
+      <h1>DO WYKONANIA</h1>
+      <ol>
+        <li v-for="item in sortedToDo">
+          {{ item }}
+        </li>
+      </ol>
+    </div>
+    <script>
+      var app = new Vue({
+        el: '#app',
+        data: {
+          todo: [
+            'Purchase two tickets to cinema',
+            'Feed cat',
+            'Pay cable bill',
+            'Go shopping'
+        ]
+        },
+        computed: {
+          sortedToDo: function () {
+            return this.todo.sort();
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
