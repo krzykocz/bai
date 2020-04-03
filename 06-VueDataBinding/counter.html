@@ -5,21 +5,17 @@
 </head>
 <body>
   <div id="app">
-    <span>Your name:</span>
-    <input type="text" v-model="name">  
+    <button v-on:click="count">{{counter}}</button> 
   </div>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
-        name: ''
+        counter: 0
       },
       methods: {
-        changeName: function(name) {
-          this.name = name;
-        },
-        showName: function() {
-          console.log(name)
+        count() {
+            this.counter++;
         }
       }
     });
