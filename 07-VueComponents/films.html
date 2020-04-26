@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <movie-matrix1></movie-matrix1>
+      <movie-matrix2></movie-matrix2>
+      <movie-matrix3></movie-matrix3>
+    </div>
+  </body>
+
+  <script>
+    Vue.component('movie-matrix1', {
+      template: `
+      <div>
+        <h1>{{title}}</h1>
+        <p>{{director}}, {{year}}</p>
+      </div>
+    `,
+      data: () => ({
+        title: 'The Matrix',
+        director: 'The Wachowskis',
+        year: '1999',
+      }),
+    });
+
+    Vue.component('movie-matrix2', {
+      template: `
+      <div>
+        <h1>{{title}}</h1>
+        <p>{{director}}, {{year}}</p>
+      </div>
+    `,
+      data: () => ({
+        title: 'The Matrix Reloaded',
+        director: 'The Wachowskis',
+        year: '2003',
+      })
+    });
+
+    Vue.component('movie-matrix3', {
+      template: `
+      <div>
+        <h1>{{title}}</h1>
+        <p>{{director}}, {{year}}</p>
+      </div>
+    `,
+      data: () => ({
+        title: 'The Matrix Revolutions',
+        director: 'The Wachowskis',
+        year: '2003',
+      }),
+    });
+
+    new Vue({
+      el: '#app',
+    });
+  </script>
+</html>

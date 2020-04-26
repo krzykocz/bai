@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <h1>Decimal to binary</h1>
+      <binary v-for="decimal in decimalValues" :decimal='decimal'/>
+    </div>
+  </body>
+
+  <script>
+    Vue.component('binary', {
+      template: `
+      <div>
+        <p>{{decimal}}(10) = {{dectobin}}(2)</p>
+      </div>
+    `,
+      props: ['decimal'],
+      computed: {
+        dectobin: function () {
+          return this.decimal.toString(2);
+        },
+      },
+    });
+
+    new Vue({
+      el: '#app',
+      data: {
+        decimalValues: [8, 170, 204, 3855],
+      },
+    });
+  </script>
+</html>
